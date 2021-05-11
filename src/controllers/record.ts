@@ -12,33 +12,23 @@ prisma
   });
 
 export async function getUserRecords(
-  req: { user_id: number },
-  // res: {
-  //   id: number;
-  //   user_id: number;
-  //   dateTime: Date;
-  //   mood_text: string;
-  //   personal_note: string;
-  //   shared: boolean;
-  // },
-): Promise<unknown> {
-  // try {
-  const records = await prisma.record.findMany({
-    where: {
-      user_id: {
-        equals: req.user_id,
-      },
-    },
-  });
-  return records;
-  // }
-  // catch {
-  // }
-}
-
-export async function addRecord(
-  req: { user_id: number },
+  req: {
+    body: { user_id: number };
+  },
   res: any,
 ): Promise<void> {
-  console.log('Tanja you are fantastic!!!');
+  const user_id: number = req.body.user_id;
+  const records = await prisma.record.findMany({
+    where: {
+      user_id: user_id,
+    },
+  });
+  res.send(records);
+}
+
+export async function addRecord(req: any, res: any): Promise<void> {
+  const newRecord = req.body.record;
+  console.log('newRecord', newRecord);
+  await prisma.record.create({ data: newRecord });
+  res.end();
 }
