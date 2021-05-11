@@ -1,4 +1,4 @@
-import express from 'express';
+import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
@@ -12,8 +12,8 @@ prisma
   });
 
 export async function getUserRecords(
-  req: express.Request,
-  res: express.Response,
+  req: Request,
+  res: Response,
 ): Promise<void> {
   const user_id: number = req.body.user_id;
   try {
@@ -30,10 +30,7 @@ export async function getUserRecords(
   }
 }
 
-export async function addRecord(
-  req: express.Request,
-  res: express.Response,
-): Promise<void> {
+export async function addRecord(req: Request, res: Response): Promise<void> {
   const newRecord = req.body.record;
   console.log('newRecord', newRecord);
   try {
