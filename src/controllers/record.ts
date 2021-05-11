@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 prisma
   .$connect()
   .then(() => {
-    console.log('database is connected, thanks to Berta!');
+    console.log('database is connected, life is good!');
   })
   .catch((error) => {
     console.error('not connected, sadness: ', error);
