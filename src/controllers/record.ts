@@ -13,7 +13,14 @@ prisma
 
 export async function getUserRecords(
   req: { user_id: number },
-  res: any,
+  res: {
+    id: number;
+    user_id: number;
+    dateTime: Date;
+    mood_text: string;
+    personal_note: string;
+    shared: boolean;
+  },
 ): Promise<void> {
   // try {
   const records = await prisma.record.findMany({
