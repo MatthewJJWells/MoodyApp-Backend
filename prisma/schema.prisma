@@ -18,6 +18,7 @@ model User {
 model Record {
 	id Int @id @default(autoincrement())
 	user_id Int
+	rating Int
 	datetime DateTime
 	mood_text String
 	personal_note String
