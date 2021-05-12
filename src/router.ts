@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post('/records', addRecord);
 
-router.get('/records', getUserRecords);
+router.get('/records/:user_id', getUserRecords);
 
 export default router;

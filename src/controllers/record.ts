@@ -15,7 +15,7 @@ export async function getUserRecords(
   req: Request,
   res: Response,
 ): Promise<void> {
-  const user_id: number = req.body.user_id;
+  const user_id: number = +req.params.user_id;
   try {
     const records = await prisma.record.findMany({
       where: {
