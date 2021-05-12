@@ -11,6 +11,22 @@ prisma
     console.error('not connected, sadness: ', error);
   });
 
+export async function addRecord(req: Request, res: Response): Promise<void> {
+  const newRecord = req.body.record;
+  console.log('req.body: ', req.body);
+  console.log('req.body.record: ', req.body.record);
+  // console.log('request body: ', req.body);
+  // console.log('newRecord', newRecord);
+  try {
+    await prisma.record.create({ data: newRecord });
+    res.status(201);
+    res.end();
+  } catch (error) {
+    console.log(error);
+    res.end();
+  }
+}
+
 export async function getUserRecords(
   req: Request,
   res: Response,
@@ -24,21 +40,6 @@ export async function getUserRecords(
     });
     res.status(200);
     res.send(records);
-  } catch (error) {
-    console.log(error);
-    res.end();
-  }
-}
-
-export async function addRecord(req: Request, res: Response): Promise<void> {
-  const newRecord = req.body.record;
-  // console.log('req.body.record: ', req.body.record);
-  // console.log('request body: ', req.body);
-  // console.log('newRecord', newRecord);
-  try {
-    await prisma.record.create({ data: newRecord });
-    res.status(201);
-    res.end();
   } catch (error) {
     console.log(error);
     res.end();
