@@ -13,10 +13,6 @@ prisma
 
 export async function addRecord(req: Request, res: Response): Promise<void> {
   const newRecord = req.body.record;
-  console.log('req.body: ', req.body);
-  console.log('req.body.record: ', req.body.record);
-  // console.log('request body: ', req.body);
-  // console.log('newRecord', newRecord);
   try {
     await prisma.record.create({ data: newRecord });
     res.status(201);
