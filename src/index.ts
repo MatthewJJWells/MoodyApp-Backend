@@ -17,6 +17,6 @@ app.get('/', (req, res) => {
   res.send('Hello!');
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT} 🚀`);
+app.listen(+PORT, '10.10.22.237', () => {
+  console.log(`Server is running at http://10.10.22.237:${PORT} 🚀`);
 });
