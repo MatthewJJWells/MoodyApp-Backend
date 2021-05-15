@@ -7,6 +7,7 @@ import router from './router';
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
+const ROUTER_IP = String(process.env.ROUTER_IP);
 
 app.use(express.json());
 app.use(cors());
@@ -17,6 +18,6 @@ app.get('/', (req, res) => {
   res.send('Hello!');
 });
 
-app.listen(+PORT, '10.10.22.237', () => {
-  console.log(`Server is running at http://10.10.22.237:${PORT} 🚀`);
+app.listen(+PORT, ROUTER_IP, () => {
+  console.log(`Server is running on ${ROUTER_IP}:${PORT} 🚀`);
 });
