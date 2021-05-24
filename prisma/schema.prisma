@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+	id Int @id @default(autoincrement())
+	name String
+	email String
+	password String
+	reminder_frequency Int
+}
+
+model Record {
+	id Int @id @default(autoincrement())
+	user_id Int
+	rating Int
+	datetime DateTime
+	mood_text String
+	personal_note String
+	shared Boolean
+}
+
+// We could not retrieve columns for the underlying table. Either it has none or you are missing rights to see them. Please check your privileges.
+// model test {
+// }
